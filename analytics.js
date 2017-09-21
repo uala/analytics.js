@@ -29411,7 +29411,7 @@ module.exports={
     "eslint": "^2.9.0",
     "eslint-plugin-mocha": "^2.2.0",
     "eslint-plugin-require-path-exists": "^1.1.5",
-    "uglify-js": "^2.6.4"
+    "uglify-js": "^3.1.1"
   }
 }
 
