@@ -50,15 +50,3 @@ build: analytics.min.js
 lint: node_modules
 	@$(ESLINT) $(SRC)
 .PHONY: lint
-
-# Run browser unit tests in a browser.
-test-browser: install
-.PHONY: test-browser
-
-# Default test target.
-test: lint test-browser
-.PHONY: test
-.DEFAULT_GOAL = test
-
-test-sauce: test
-.PHONY: test-sauce
