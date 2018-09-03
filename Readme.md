@@ -1,6 +1,6 @@
 # Build your own Analytics.js
 
-This is a fork of Segment's [analytics.js](https://github.com/segmentio/analytics.js) and [#PR 154](https://github.com/segmentio/analytics.js/pull/514) by rcline.
+This is a fork of Segment's (analytics.js)[https://github.com/segmentio/analytics.js] and [#PR 154](https://github.com/segmentio/analytics.js/pull/514) by rcline.
 
 This repository houses a pre-built version of `analytics.js` containing every analytics integration supported by Segment.
 

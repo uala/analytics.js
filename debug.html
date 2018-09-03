@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Analytics debug</title>
+</head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ClientJS/0.1.11/client.min.js"></script>
+<script type="text/javascript">
+    var analytics=analytics||[];analytics.load=function(e){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src=("https:"===document.location.protocol?"https://":"http://")+location.host+"/analytics.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(t,n);var r=function(e){return function(){analytics.push([e].concat(Array.prototype.slice.call(arguments,0)))}},i=["identify","track","trackLink","trackForm","trackClick","trackSubmit","pageview","ab","alias","ready"];for(var s=0;s<i.length;s++)analytics[i[s]]=r(i[s])};
+    analytics.load("");
+
+    setTimeout(function () {
+        var hostParts = window.location.hostname.split('.');
+        var apiHost = 'track.' + hostParts[hostParts.length - 2] + '.' + hostParts[hostParts.length - 1] + '/v1';
+
+        var client = new ClientJS();
+
+        analytics.initialize({
+            "Segment.io":{
+                apiKey: '0102579bc71fda1d4dd25feec83f2b3b5b9d0dd3189eb68abd4fc40e6c27ef6b',
+                apiHost: apiHost,
+                version: '1.2.3',
+                context: {
+                    device: {
+                        type: client.getDeviceType(),
+                        fingerprint: client.getFingerprint(),
+                        manufacturer: client.getDeviceVendor(),
+                        name: navigator.platform
+                    },
+                    location: {
+                        latitude: sessionStorage.hasOwnProperty('currentPosition') ? sessionStorage.getItem('currentPosition').coords.latitude : undefined,
+                        longitude: sessionStorage.hasOwnProperty('currentPosition') ? sessionStorage.getItem('currentPosition').coords.longitude : undefined
+                    },
+                    network: {
+                        type: navigator.connection.effectiveType,
+                        speed: navigator.connection.downlink
+                    },
+                    os: {
+                        name: client.getOS(),
+                        version: client.getOSVersion()
+                    },
+                    browser: {
+                        name: client.getBrowser(),
+                        majorVersion: client.getBrowserMajorVersion(),
+                        version: client.getBrowserVersion()
+                    },
+                    locale: Intl.DateTimeFormat().resolvedOptions().locale,
+                    timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+                }
+            }
+        })
+    }, 500)
+</script>
+</body>
+</html>

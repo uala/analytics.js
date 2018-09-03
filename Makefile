@@ -39,8 +39,8 @@ analytics.js: install $(SRC) package.json
 	@$(BROWSERIFY) lib/index.js --standalone analytics > analytics.js
 
 # Build minified analytics.js.
-analytics.min.js: analytics.js
-	@$(UGLIFYJS) $< --output $@
+analytics.min.js:
+	@$(UGLIFYJS) analytics.js --output $@
 
 # Build shortcut.
 build: analytics.min.js
